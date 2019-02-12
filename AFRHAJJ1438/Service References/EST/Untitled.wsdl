@@ -1,0 +1,678 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:ns10="http://b2b.haj.gov.sa/Establishments/v1.0.0/UpdateHajjFlight" xmlns:tns="http://xmlns.b2b.haj.gov.sa/Establishments/v1.0.0" xmlns:ns2="http://b2b.haj.gov.sa/Establishments/v1.0.0/CancelGetHajData" xmlns:ns8="http://b2b.haj.gov.sa/Establishments/v1.0.0/ServiceContract" xmlns:ns6="http://b2b.haj.gov.sa/Establishments/v1.0.0/GetHajjsExists" xmlns:ns3="http://haj.gov.sa/common/v1.0.0/ErrorSchema" xmlns:ns9="http://b2b.haj.gov.sa/Establishments/v1.0.0/UpdateHajInfo" xmlns:ns0="http://haj.gov.sa/common/v1.0.0" xmlns:ns7="http://b2b.haj.gov.sa/Establishments/v1.0.0/TafweejServices" xmlns:ns5="http://b2b.haj.gov.sa/Establishments/v1.0.0/GetHajjID" xmlns:ns4="http://b2b.haj.gov.sa/Establishments/v1.0.0/GroupsPackages" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://b2b.haj.gov.sa/Establishments/v1.0.0/AddBranches" name="Untitled" targetNamespace="http://xmlns.b2b.haj.gov.sa/Establishments/v1.0.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns:ns="http://b2b.haj.gov.sa/Establishments/v1.0.0/ServiceContract" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://b2b.haj.gov.sa/Establishments/v1.0.0/ServiceContract" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="AddServiceContract">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="HHRM_ID" type="xs:long" />
+            <xs:element name="RECEIPT_NO" type="xs:string" />
+            <xs:element name="RECEIPT_DATE_HIJ">
+              <xs:simpleType>
+                <xs:restriction base="xs:int">
+                  <xs:totalDigits value="8" />
+                  <xs:minInclusive value="8" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="CONTRACT_AMOUNT" type="xs:decimal" />
+            <xs:element name="TOT_PILGRIMS" type="xs:long" />
+            <xs:element name="CONTRACT_NO" type="xs:long" />
+            <xs:element name="CONTRACT_DATE_HIJ">
+              <xs:simpleType>
+                <xs:restriction base="xs:int">
+                  <xs:totalDigits value="8" />
+                  <xs:minInclusive value="8" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="PAYMENT_TYPE" type="xs:int" />
+            <xs:element minOccurs="0" name="BNK_ID" type="xs:int" />
+            <xs:element minOccurs="0" name="BANK_CTTY_ID" type="xs:int" />
+            <xs:element minOccurs="0" name="WARRANTY_NO" type="xs:string" />
+            <xs:element minOccurs="0" name="WARRANTY_STRAT_DATE_HIJ">
+              <xs:simpleType>
+                <xs:restriction base="xs:int">
+                  <xs:totalDigits value="8" />
+                  <xs:minInclusive value="8" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element minOccurs="0" name="WARRANTY_EXPIRY_DATE_HIJ">
+              <xs:simpleType>
+                <xs:restriction base="xs:int">
+                  <xs:totalDigits value="8" />
+                  <xs:minInclusive value="8" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element minOccurs="0" name="CHEQUE_NO" type="xs:string" />
+            <xs:element minOccurs="0" name="CHEQUE_DATE_HIJ">
+              <xs:simpleType>
+                <xs:restriction base="xs:int">
+                  <xs:totalDigits value="8" />
+                  <xs:minInclusive value="8" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="REFERENCE_NO" type="xs:long" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ServiceContractResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="HHBW_ID" type="xs:long" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:ns="http://b2b.haj.gov.sa/Establishments/v1.0.0/UpdateHajjFlight" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://b2b.haj.gov.sa/Establishments/v1.0.0/UpdateHajjFlight" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="UpdateHajjFlight">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="HFD_ID" type="xs:long" />
+            <xs:element name="CAPACITY" type="xs:positiveInteger" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:ns="http://haj.gov.sa/common/v1.0.0/LoginSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://haj.gov.sa/common/v1.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="Login">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="USER_NAME" type="xs:string" />
+            <xs:element name="PASSWORD" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:ns="http://b2b.haj.gov.sa/Establishments/v1.0.0/AddBranches" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://b2b.haj.gov.sa/Establishments/v1.0.0/AddBranches" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="AB_BRANCH_HEAD_ID_NO" type="xs:string" />
+      <xs:element name="BranchDetails">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="AB_NO">
+              <xs:simpleType>
+                <xs:restriction base="xs:long">
+                  <xs:maxExclusive value="9999" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="AB_NAME_AR" type="xs:string" />
+            <xs:element name="AB_NAME_LA" type="xs:string" />
+            <xs:element name="AB_HAJ_QUOTA">
+              <xs:simpleType>
+                <xs:restriction base="xs:long">
+                  <xs:maxExclusive value="10000000" />
+                  <xs:minInclusive value="1" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element minOccurs="0" name="AB_BRANCH_TEL1" type="xs:string" />
+            <xs:element minOccurs="0" name="AB_BRANCH_TEL2" type="xs:string" />
+            <xs:element minOccurs="0" name="AB_BRANCH_FAX" type="xs:string" />
+            <xs:element minOccurs="0" name="AB_BRANCH_ADDRESS" type="xs:string" />
+            <xs:element minOccurs="0" name="AB_BRANCH_HEAD_NAME" type="xs:string" />
+            <xs:element minOccurs="0" ref="ns:AB_BRANCH_HEAD_ID_NO" />
+            <xs:element minOccurs="0" name="AB_BRANCH_HEAD_MOBLIE" type="xs:string" />
+            <xs:element minOccurs="0" name="AB_LATITUDE" type="xs:float" />
+            <xs:element minOccurs="0" name="AB_LONGITUDE" type="xs:float" />
+            <xs:element minOccurs="0" name="AB_HM_HC_QUOTA">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" maxOccurs="unbounded" name="HM_HC_QUOTA_DETAILS">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:choice>
+                          <xs:element name="HC_NO" type="xs:long" />
+                          <xs:element name="HM_NO" type="xs:long" />
+                        </xs:choice>
+                        <xs:element name="HM_HC_QUOTA">
+                          <xs:simpleType>
+                            <xs:restriction base="xs:long">
+                              <xs:minInclusive value="1" />
+                              <xs:maxExclusive value="10000000" />
+                            </xs:restriction>
+                          </xs:simpleType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Result">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ERROR_CODE" type="xs:long" />
+            <xs:element name="ERROR_DESC" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:ns="http://b2b.haj.gov.sa/Establishments/v1.0.0/GetHajjID" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://b2b.haj.gov.sa/Establishments/v1.0.0/GetHajjID" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="GetHajjID">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="PASSPORT_NO" type="xs:string" />
+            <xs:element minOccurs="0" name="NOT_ID" type="xs:long" />
+            <xs:element minOccurs="0" name="GCC_PERMISSION_NO" type="xs:long" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="HajjIDResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="HD_ID" type="xs:long" />
+            <xs:element minOccurs="0" name="VISA_NO" type="xs:long" />
+            <xs:element minOccurs="0" name="BORDER_NO" type="xs:long" />
+            <xs:element minOccurs="0" name="DEPENDENTS_SERIAL_NO" type="xs:long" />
+            <xs:element minOccurs="0" name="HAJJ_NAME" type="xs:string" />
+            <xs:element minOccurs="0" name="EST_ID" type="xs:long" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:ns="http://haj.gov.sa/common/v1.0.0/ErrorSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://haj.gov.sa/common/v1.0.0/ErrorSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="Result">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ERROR_CODE" type="xs:string" />
+            <xs:element name="ERROR_DESCRIPTION" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:ns="http://b2b.haj.gov.sa/Establishments/v1.0.0/UpdateHajInfo" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://b2b.haj.gov.sa/Establishments/v1.0.0/UpdateHajInfo" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="UpdateHajInfo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="HajInfoID" type="xs:long" />
+            <xs:element minOccurs="0" name="BorderNumber" type="xs:long" />
+            <xs:element minOccurs="0" name="SerialNo" type="xs:long" />
+            <xs:element minOccurs="0" name="ServiceGroup" type="xs:long" />
+            <xs:element minOccurs="0" name="HouseContract" type="xs:long" />
+            <xs:element minOccurs="0" name="HouseId" type="xs:long" />
+            <xs:element minOccurs="0" name="UAO_No" type="xs:long" />
+            <xs:element minOccurs="0" name="NaqabaTicket" type="xs:long" />
+            <xs:element minOccurs="0" name="PaymentStatus" type="xs:long" />
+            <xs:element minOccurs="0" name="ArrivalDate" type="xs:dateTime" />
+            <xs:element minOccurs="0" name="ArrivalPath" type="xs:long" />
+            <xs:element minOccurs="0" name="ArrivalBusNo" type="xs:long" />
+            <xs:element minOccurs="0" name="ArrivalStatementNo" type="xs:long" />
+            <xs:element minOccurs="0" name="DepartureDate" type="xs:dateTime" />
+            <xs:element minOccurs="0" name="DeparturePath" type="xs:long" />
+            <xs:element minOccurs="0" name="DepartureBusNo" type="xs:long" />
+            <xs:element minOccurs="0" name="DepartureStatementNo" type="xs:long" />
+            <xs:element minOccurs="0" name="operation" type="xs:long" />
+            <xs:element minOccurs="0" name="Comment" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:ns="http://b2b.haj.gov.sa/Establishments/v1.0.0/GetHajjsExists" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://b2b.haj.gov.sa/Establishments/v1.0.0/GetHajjsExists" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="GET_HAJJS_EXISTS">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element name="HC_ID" type="xs:long" />
+            <xs:element name="HM_ID" type="xs:long" />
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Get_Hajj_Exists_Response">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="HAJJS_IN_COUNTRY" type="xs:long" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:ns="http://b2b.haj.gov.sa/Establishments/v1.0.0/TafweejServices" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://b2b.haj.gov.sa/Establishments/v1.0.0/TafweejServices" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="FLIGHT_DETAILS">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="HFD_OPERATION" type="xs:int" />
+            <xs:element name="HFD_ID" type="xs:long" />
+            <xs:element name="HFD_DIRECTION" type="xs:string" />
+            <xs:element name="HFD_SEASON" type="xs:int" />
+            <xs:element name="HFD_FLIGHT_TYPE" type="xs:int" />
+            <xs:element name="HFD_AIRPORT_CODE" type="xs:string" />
+            <xs:element name="HFD_CARRIER_ID" type="xs:string" />
+            <xs:element name="HFD_FLIGHT_NO" type="xs:string" />
+            <xs:element name="HFD_FLIGHT_DATE" type="xs:dateTime" />
+            <xs:element name="HFD_CITY_ID" type="xs:string" />
+            <xs:element name="HFD_AIRCRAFT_TYPE" type="xs:string" />
+            <xs:element name="HFD_MAX_AIRCRAFT_CAPACITY" type="xs:string" />
+            <xs:element name="HFD_RESERVATION_NUMBER" type="xs:string" />
+            <xs:element name="HFD_TERMINAL_CODE" type="xs:string" />
+            <xs:element name="HFD_FLIGHT_CLEARANCE_NO" type="xs:string" />
+            <xs:element name="HFD_STATE" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GET_FLIGHT_DETAILS">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" ref="ns:FLIGHT_DETAILS" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GET_HAJJ_TRIPS">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" ref="ns:HAJJ_TRIPS" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GET_HAJJ_TRIP_INQUERY_RESULT">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" ref="ns:HAJJ_TRIP_INQUERY_RESULT" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="HAJJ_TRIPS">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="HT_EST_ID" type="xs:int" />
+            <xs:element name="HT_EST_BRANCH_NO" type="xs:int" />
+            <xs:element name="HT_BUS_TRIP_NO" type="xs:int" />
+            <xs:element minOccurs="0" name="HT_PORT_ID" type="xs:int" />
+            <xs:element name="HT_LTC_ID" type="xs:int" />
+            <xs:element name="HT_TRIP_DATE" type="xs:dateTime" />
+            <xs:element name="HT_BUS_SER_NO" type="xs:int" />
+            <xs:element name="HT_BUS_SEATS" type="xs:int" />
+            <xs:element name="HT_CAR_TYPE_ID" type="xs:int" />
+            <xs:element name="HT_DRIVER_ID">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="10" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="HT_DRIVER_NAME" type="xs:string" />
+            <xs:element name="HT_DRIVER_NAT_ID" type="xs:int" />
+            <xs:element name="HT_TABLE_NO" type="xs:string" />
+            <xs:element name="HT_PATH_ID" type="xs:int" />
+            <xs:element minOccurs="0" name="HT_NAQABA_CONFIRM_NO" type="xs:string" />
+            <xs:element name="HT_BUS_ARRIVAL_DATE" type="xs:dateTime" />
+            <xs:element name="HT_BUS_DEPARTURE_LOCATION" type="xs:string" />
+            <xs:element name="DETAILS">
+              <xs:complexType>
+                <xs:choice>
+                  <xs:element maxOccurs="unbounded" name="Flight">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="HT_FD_ID" type="xs:long" />
+                        <xs:element maxOccurs="unbounded" name="HT_HD_ID" type="xs:long" />
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element maxOccurs="unbounded" name="House">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="HT_HC_ID" type="xs:long" />
+                        <xs:element maxOccurs="unbounded" name="HT_HD_ID" type="xs:long" />
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:choice>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="HAJJ_TRIPS_CANCELATION">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="HT_ID" type="xs:long" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="HAJJ_TRIPS_DETAILS">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="ns:HD_ID" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="HAJJ_TRIPS_OUTPUT">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="HT_ID" type="xs:long" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="HAJJ_TRIP_INQUERY">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="EST_NO" type="xs:int" />
+            <xs:element name="EST_BRANCH_NO" type="xs:int" />
+            <xs:element name="TRIPP_NO" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="HAJJ_TRIP_INQUERY_RESULT">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="HT_ID" type="xs:int" />
+            <xs:element minOccurs="0" name="HT_HFD_ID" type="xs:int" />
+            <xs:element minOccurs="0" name="HT_HC_ID" type="xs:long" />
+            <xs:element name="HT_SEASON" type="xs:string" />
+            <xs:element minOccurs="0" name="HT_PORT_ID" type="xs:int" />
+            <xs:element name="HT_LTC_ID" type="xs:int" />
+            <xs:element name="HT_TRIP_DATE" type="xs:dateTime" />
+            <xs:element name="HT_BUS_SER_NO" type="xs:string" />
+            <xs:element name="HT_BUS_SEATS" type="xs:int" />
+            <xs:element name="HT_CAR_TYPE_ID" type="xs:int" />
+            <xs:element name="HT_DRIVER_ID" type="xs:string" />
+            <xs:element name="HT_DRIVER_NAME" type="xs:string" />
+            <xs:element name="HT_DRIVER_NAT_ID" type="xs:string" />
+            <xs:element name="HT_TABLE_NO" type="xs:string" />
+            <xs:element name="HT_PATH_ID" type="xs:int" />
+            <xs:element minOccurs="0" name="HT_NAQABA_CONFIRM_NO" type="xs:string" />
+            <xs:element name="HT_BUS_ARRIVAL_DATE" type="xs:dateTime" />
+            <xs:element name="HT_BUS_DEPARTURE_LOCATION" type="xs:string" />
+            <xs:element name="HT_STATE" type="xs:int" />
+            <xs:element name="HT_HAJJ_TOTALS" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="HD_ID" type="xs:long" />
+      <xs:element name="INQUERY_CRITERIA">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element name="FLIGHT_ID">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="HFD_ID" type="xs:long" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="FLIGHT_KEY">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CARRIER_CODE" type="xs:string" />
+                  <xs:element name="FLIGHT_NO" type="xs:string" />
+                  <xs:element name="DATE" type="xs:date" />
+                  <xs:element name="AIRPORT_CODE" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:ns="http://b2b.haj.gov.sa/Establishments/v1.0.0/CancelGetHajData" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://b2b.haj.gov.sa/Establishments/v1.0.0/CancelGetHajData" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="CancelGetHajData">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element name="BORDER_NO" type="xs:long" />
+            <xs:element name="VISA_NO" type="xs:long" />
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:ns="http://b2b.haj.gov.sa/Establishments/v1.0.0/GroupsPackages" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://b2b.haj.gov.sa/Establishments/v1.0.0/GroupsPackages" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="HAJ_GROUP_PACKAGE">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="REQUEST_ID" type="xs:long" />
+            <xs:element name="HGP_ID" type="xs:long" />
+            <xs:element minOccurs="0" name="GROUP_ID" type="xs:long" />
+            <xs:element minOccurs="0" name="GROUP_NAME" type="xs:string" />
+            <xs:element minOccurs="0" name="HGP_HM_ID" type="xs:long" />
+            <xs:element minOccurs="0" name="HGP_HC_ID" type="xs:long" />
+            <xs:element name="HGP_HAJJ_COUNT" type="xs:long" />
+            <xs:element minOccurs="0" name="HEB_ID" type="xs:long" />
+            <xs:element minOccurs="0" name="HGP_DETAILS">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="FLIGTH_CONTRACTS">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element minOccurs="0" maxOccurs="unbounded" name="HHBF_ID" type="xs:long" />
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element minOccurs="0" name="HOUSING_CONTRACTS">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element minOccurs="0" maxOccurs="unbounded" name="HOUSING_CONTRACT">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element minOccurs="0" name="HC_ID" type="xs:long" />
+                              <xs:element minOccurs="0" name="START_DATE" type="xs:dateTime" />
+                              <xs:element minOccurs="0" name="END_DATE" type="xs:dateTime" />
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element minOccurs="0" name="FOOD_CONTRACTS">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element minOccurs="0" maxOccurs="unbounded" name="FC_ID" type="xs:long" />
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="HAJ_GROUP_PACKAGE_RESPONSE">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="HGP_ID" type="xs:decimal" />
+            <xs:element minOccurs="0" name="HGP_BRANCH_ID" type="xs:decimal" />
+            <xs:element minOccurs="0" name="HGP_MENA_CAMP_ID" type="xs:decimal" />
+            <xs:element minOccurs="0" name="HGP_ARAFA_CAMP_ID" type="xs:decimal" />
+            <xs:element minOccurs="0" name="TARADODIA" type="xs:int" />
+            <xs:element minOccurs="0" name="ADELLA_BARNCH_ID" type="xs:long" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="AddBranchesInput">
+    <wsdl:part name="Login" element="ns0:Login" />
+    <wsdl:part name="AddBranches" element="ns1:BranchDetails" />
+  </wsdl:message>
+  <wsdl:message name="AddBranchesOutput">
+    <wsdl:part name="Result" element="ns1:Result" />
+  </wsdl:message>
+  <wsdl:message name="CancelHajDataInput">
+    <wsdl:part name="Login" element="ns0:Login" />
+    <wsdl:part name="CancelHajData" element="ns2:CancelGetHajData" />
+  </wsdl:message>
+  <wsdl:message name="CancelHajDataOutput">
+    <wsdl:part name="Result" element="ns3:Result" />
+  </wsdl:message>
+  <wsdl:message name="AddResponsePackageInput">
+    <wsdl:part name="Login" element="ns0:Login" />
+    <wsdl:part name="AddPackageResponse" element="ns4:HAJ_GROUP_PACKAGE_RESPONSE" />
+  </wsdl:message>
+  <wsdl:message name="AddResponsePackageOutput">
+    <wsdl:part name="Result" element="ns3:Result" />
+  </wsdl:message>
+  <wsdl:message name="GetHajjIDInput">
+    <wsdl:part name="Login" element="ns0:Login" />
+    <wsdl:part name="GetHajjIDRQ" element="ns5:GetHajjID" />
+  </wsdl:message>
+  <wsdl:message name="GetHajjIDOutput">
+    <wsdl:part name="Result" element="ns3:Result" />
+    <wsdl:part name="GetHajjIDResponse" element="ns5:HajjIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHajjsExistsInput">
+    <wsdl:part name="Login" element="ns0:Login" />
+    <wsdl:part name="GetHajjsExists" element="ns6:GET_HAJJS_EXISTS" />
+  </wsdl:message>
+  <wsdl:message name="GetHajjsExistsOutput">
+    <wsdl:part name="HajjsExistsDetails" element="ns6:Get_Hajj_Exists_Response" />
+    <wsdl:part name="Result" element="ns3:Result" />
+  </wsdl:message>
+  <wsdl:message name="TafweejGetFlightDetailsInput">
+    <wsdl:part name="Login" element="ns0:Login" />
+    <wsdl:part name="GetFlightDetails" element="ns7:INQUERY_CRITERIA" />
+  </wsdl:message>
+  <wsdl:message name="TafweejGetFlightDetailsOutput">
+    <wsdl:part name="FlightDetailsResponse" element="ns7:GET_FLIGHT_DETAILS" />
+    <wsdl:part name="Result" element="ns3:Result" />
+  </wsdl:message>
+  <wsdl:message name="AddServiceContractInput">
+    <wsdl:part name="Login" element="ns0:Login" />
+    <wsdl:part name="AddServiceContract" element="ns8:AddServiceContract" />
+  </wsdl:message>
+  <wsdl:message name="AddServiceContractOutput">
+    <wsdl:part name="ServiceContractResponse" element="ns8:ServiceContractResponse" />
+    <wsdl:part name="Result" element="ns3:Result" />
+  </wsdl:message>
+  <wsdl:message name="UpdateHajInfoInput">
+    <wsdl:part name="Login" element="ns0:Login" />
+    <wsdl:part name="UpdateHajjInfo" element="ns9:UpdateHajInfo" />
+  </wsdl:message>
+  <wsdl:message name="UpdateHajInfoOutput">
+    <wsdl:part name="Result" element="ns3:Result" />
+  </wsdl:message>
+  <wsdl:message name="UpdateHajjFlightInput">
+    <wsdl:part name="Login" element="ns0:Login" />
+    <wsdl:part name="UpdateHajjFlight" element="ns10:UpdateHajjFlight" />
+  </wsdl:message>
+  <wsdl:message name="UpdateHajjFlightOutput">
+    <wsdl:part name="Result" element="ns3:Result" />
+  </wsdl:message>
+  <wsdl:portType name="EstablishmentsServices">
+    <wsdl:operation name="AddBranches">
+      <wsdl:input message="tns:AddBranchesInput" />
+      <wsdl:output message="tns:AddBranchesOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelGetHajData">
+      <wsdl:input message="tns:CancelHajDataInput" />
+      <wsdl:output message="tns:CancelHajDataOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="AddResponsePackage">
+      <wsdl:input message="tns:AddResponsePackageInput" />
+      <wsdl:output message="tns:AddResponsePackageOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHajjID">
+      <wsdl:input message="tns:GetHajjIDInput" />
+      <wsdl:output message="tns:GetHajjIDOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHajjsExists">
+      <wsdl:input message="tns:GetHajjsExistsInput" />
+      <wsdl:output message="tns:GetHajjsExistsOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDetails">
+      <wsdl:input message="tns:TafweejGetFlightDetailsInput" />
+      <wsdl:output message="tns:TafweejGetFlightDetailsOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="AddServiceContractWarranty">
+      <wsdl:input message="tns:AddServiceContractInput" />
+      <wsdl:output message="tns:AddServiceContractOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHajInfo">
+      <wsdl:input message="tns:UpdateHajInfoInput" />
+      <wsdl:output message="tns:UpdateHajInfoOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHajjFlight">
+      <wsdl:input message="tns:UpdateHajjFlightInput" />
+      <wsdl:output message="tns:UpdateHajjFlightOutput" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EstablishmentsServicesEndpoint1Binding" type="tns:EstablishmentsServices">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddBranches">
+      <soap:operation soapAction="/API/Inbound/DisPatcher/EstablishmentsServices.serviceagent/EstablishmentsServicesEndpoint1/AddBranches" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" parts="Login AddBranches" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="Result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelGetHajData">
+      <soap:operation soapAction="/API/Inbound/DisPatcher/EstablishmentsServices.serviceagent/EstablishmentsServicesEndpoint1/CancelGetHajData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" parts="Login CancelHajData" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="Result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddResponsePackage">
+      <soap:operation soapAction="/API/Inbound/DisPatcher/EstablishmentsServices.serviceagent/EstablishmentsServicesEndpoint1/AddResponsePackage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" parts="Login AddPackageResponse" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="Result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHajjID">
+      <soap:operation soapAction="/API/Inbound/DisPatcher/EstablishmentsServices.serviceagent/EstablishmentsServicesEndpoint1/GetHajjID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" parts="Login GetHajjIDRQ" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="Result GetHajjIDResponse" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHajjsExists">
+      <soap:operation soapAction="/API/Inbound/DisPatcher/EstablishmentsServices.serviceagent/EstablishmentsServicesEndpoint1/GetHajjsExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" parts="Login GetHajjsExists" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="HajjsExistsDetails Result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDetails">
+      <soap:operation soapAction="/API/Inbound/DisPatcher/EstablishmentsServices.serviceagent/EstablishmentsServicesEndpoint1/GetFlightDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" parts="Login GetFlightDetails" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="FlightDetailsResponse Result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddServiceContractWarranty">
+      <soap:operation soapAction="/API/Inbound/DisPatcher/EstablishmentsServices.serviceagent/EstablishmentsServicesEndpoint1/AddServiceContractWarranty" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" parts="Login AddServiceContract" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="ServiceContractResponse Result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHajInfo">
+      <soap:operation soapAction="/API/Inbound/DisPatcher/EstablishmentsServices.serviceagent/EstablishmentsServicesEndpoint1/UpdateHajInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" parts="Login UpdateHajjInfo" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="Result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHajjFlight">
+      <soap:operation soapAction="/API/Inbound/DisPatcher/EstablishmentsServices.serviceagent/EstablishmentsServicesEndpoint1/UpdateHajjFlight" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" parts="Login UpdateHajjFlight" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="Result" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EstablishmentsServices.serviceagent">
+    <wsdl:port name="EstablishmentsServicesEndpoint1" binding="tns:EstablishmentsServicesEndpoint1Binding">
+      <soap:address location="https://localhost:10003/API/EST" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

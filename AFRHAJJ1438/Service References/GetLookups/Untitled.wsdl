@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://service.Lookups.ExternalHajj.sejel/GetLookupDetailsImpl/Integration/lookups/GetLookupDetailsImpl/Integration/lookups" xmlns:ns0="http://XSD.Hajj.net/ExternalHajj.Gov.Sa/V1" name="Untitled" targetNamespace="http://service.Lookups.ExternalHajj.sejel/GetLookupDetailsImpl/Integration/lookups/GetLookupDetailsImpl/Integration/lookups" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://XSD.Hajj.net/ExternalHajj.Gov.Sa/V1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="DETAILS">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="CELL">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CNAME" type="xs:string" />
+                  <xs:element name="CTYPE" type="xs:string" />
+                  <xs:element name="CVALUE" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="LOGIN">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="USER_NAME" type="xs:string" />
+            <xs:element name="PASSWORD" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="REQUEST_INFO">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ENTITY_ID" type="xs:long" />
+            <xs:element name="RECORD_ID" type="xs:long" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RESULT">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ERROR_CODE" type="xs:string" />
+            <xs:element name="ERROR_DESC" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="InputData">
+    <wsdl:part name="Login" element="ns0:LOGIN" />
+    <wsdl:part name="InputData" element="ns0:REQUEST_INFO" />
+  </wsdl:message>
+  <wsdl:message name="OutputData">
+    <wsdl:part name="Result" element="ns0:DETAILS" />
+    <wsdl:part name="OutputData" element="ns0:RESULT" />
+  </wsdl:message>
+  <wsdl:portType name="PortType">
+    <wsdl:operation name="GetLookupDetails">
+      <wsdl:input message="tns:InputData" />
+      <wsdl:output message="tns:OutputData" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SOAPEventSourceBinding" type="tns:PortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLookupDetails">
+      <soap:operation soapAction="/Integration/lookups/GetLookupDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" parts="Login InputData" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="Result OutputData" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GetLookupDetails">
+    <wsdl:port name="SOAPEventSource" binding="tns:SOAPEventSourceBinding">
+      <soap:address location="https://eh-b2b.haj.gov.sa:6443/Integration/lookups/GetLookupDetails" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

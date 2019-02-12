@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SendHajMianifestInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendHajMianifestInfo" type="tns:SendHajMianifestInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="LOGIN" type="tns:LOGIN" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SendHajMianifestInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MANIFEST_ID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MANIFEST_PRT_ID" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="MANIFEST_LTC_ID" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="MANIFEST_ROUTE_ID" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="MANIFEST_TRIP_DATE" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="MANIFEST_TRIP_DATE_HIJ" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="MANIFEST_BI_ID" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="MANIFEST_DI_ID" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="MANIFEST_HOUSE_ID" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="MANIFEST_STATE" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="MANIFEST_EST_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MANIFEST_HEB_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VEHICLE_TYPE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NATIONALITY_BUS_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MANIFEST_TYPE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MANIFEST_DETAILS" type="tns:ArrayOfDETAILS" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDETAILS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DETAILS" nillable="true" type="tns:DETAILS" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DETAILS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MANIFEST_PASSPORT_NO" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MANIFEST_NT_ID" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="MANIFEST_HD_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MANIFEST_HAJ_TYPE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MAINFEST_DEPENDENT_NO" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GROUP_ID" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LOGIN">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="USER_NAME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PASSWORD" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendHajMianifestInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendHajMianifestInfoResult" type="tns:RESULT3" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RESULT3">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RESULT">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="ReferenceID" type="s:long" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RESULT">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ERROR_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ERROR_DESC" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="HajjTrip">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendHajjTrip" type="tns:ArrayOfSendHajjTrip" />
+            <s:element minOccurs="0" maxOccurs="1" name="LOGIN" type="tns:LOGIN" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSendHajjTrip">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SendHajjTrip" nillable="true" type="tns:SendHajjTrip" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SendHajjTrip">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SHT_TAFWEEJ_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SHT_NAQABA_CONFIRM_NO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SHT_EST_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SHT_HEB_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SHT_TRIP_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SHT_LTC_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SHT_BUS_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SHT_DRIVER_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SHT_STATE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SHT_TYPE" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SHT_TRIP_DATE" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Details" type="tns:Details" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Details">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Flights" type="tns:ArrayOfFlight" />
+          <s:element minOccurs="0" maxOccurs="1" name="Houses" type="tns:ArrayOfHouse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFlight">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Flight" nillable="true" type="tns:Flight" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Flight">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SHT_FD_ID" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="HAJJS" type="tns:ArrayOfHAJJS" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfHAJJS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="HAJJS" nillable="true" type="tns:HAJJS" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="HAJJS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SHT_HD_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SHT_NT_ID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfHouse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="House" nillable="true" type="tns:House" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="House">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="HT_HC_ID" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="HAJJS" type="tns:ArrayOfHAJJS" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="HajjTripResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HajjTripResult" type="tns:RESULT" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendHajjTrip">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendHajjTrip" type="tns:ArrayOfSendHajjTrip" />
+            <s:element minOccurs="0" maxOccurs="1" name="LOGIN" type="tns:LOGIN" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendHajjTripResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendHajjTripResult" type="tns:RESULT" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SendHajMianifestInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:SendHajMianifestInfo" />
+  </wsdl:message>
+  <wsdl:message name="SendHajMianifestInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:SendHajMianifestInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="HajjTripSoapIn">
+    <wsdl:part name="parameters" element="tns:HajjTrip" />
+  </wsdl:message>
+  <wsdl:message name="HajjTripSoapOut">
+    <wsdl:part name="parameters" element="tns:HajjTripResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendHajjTripSoapIn">
+    <wsdl:part name="parameters" element="tns:SendHajjTrip" />
+  </wsdl:message>
+  <wsdl:message name="SendHajjTripSoapOut">
+    <wsdl:part name="parameters" element="tns:SendHajjTripResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceSoap">
+    <wsdl:operation name="SendHajMianifestInfo">
+      <wsdl:input message="tns:SendHajMianifestInfoSoapIn" />
+      <wsdl:output message="tns:SendHajMianifestInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HajjTrip">
+      <wsdl:input message="tns:HajjTripSoapIn" />
+      <wsdl:output message="tns:HajjTripSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendHajjTrip">
+      <wsdl:input message="tns:SendHajjTripSoapIn" />
+      <wsdl:output message="tns:SendHajjTripSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendHajMianifestInfo">
+      <soap:operation soapAction="http://tempuri.org/SendHajMianifestInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HajjTrip">
+      <soap:operation soapAction="http://tempuri.org/HajjTrip" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendHajjTrip">
+      <soap:operation soapAction="http://tempuri.org/SendHajjTrip" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendHajMianifestInfo">
+      <soap12:operation soapAction="http://tempuri.org/SendHajMianifestInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HajjTrip">
+      <soap12:operation soapAction="http://tempuri.org/HajjTrip" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendHajjTrip">
+      <soap12:operation soapAction="http://tempuri.org/SendHajjTrip" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService">
+    <wsdl:port name="WebServiceSoap" binding="tns:WebServiceSoap">
+      <soap:address location="https://86.51.155.40:3443/WebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceSoap12" binding="tns:WebServiceSoap12">
+      <soap12:address location="https://86.51.155.40:3443/WebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
